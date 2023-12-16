@@ -1,0 +1,136 @@
+Кольори та шрифти
+У цьому уроці ти дізнаєшся, як задавати кольори та шрифти на сторінці.
+
+Кольори
+Існує декілька властивостей, які дозволяють змінювати кольори елементів. Ось основні з них:
+
+color — колір тексту;
+background-color — фоновий колір;
+border-color — колір рамки.
+color: white;
+background-color: black;
+
+Встановити колір можна за допомогою одного з наступних форматів:
+
+назва кольору: white, black, blue, red тощо;
+rgb — інтенсивність червоного, зеленого та синього кольорів. Можна використовувати відсотки або як цілі числа від 0 до 255;
+color: rgb(100%, 50%, 0);
+color: rgb(255, 128, 0);
+
+rgba — те саме, що й rgb, плюс прозорість кольору у відсотках або числом від 0 до 1:
+color: rgba(255, 0, 0, 50%);
+color: rgba(255, 0, 0, 0.5);
+
+шістнадцяткове число із 6 або 3 символів з # на початку:
+color: #ff0000;
+color: #f00; /* the same as `#ff0000` */
+
+Існують й інші формати, але вони використовуються набагато рідше.
+
+Шрифти
+Встановити шрифт можна за допомогою властивості font-family. Ми перелічуємо через кому назви шрифтів або сімейства шрифтів. Якщо першого 
+шрифту немає на комп'ютері користувача, що відкрив сторінку, браузер використає наступний, і так далі:
+
+font-family: Arial, Helvetica, sans-serif;
+font-family: 'Times New Roman', Times, serif;
+
+Варто зауважити, що існує два основних сімейства: із засічками (serif) та без засічок (sans-serif). Детальніше про них можна дізнатися з 
+відео до уроку.
+
+Параметри шрифту
+Властивість font-weight дозволяє зробити літери товщими або тоншими залежно від свого значення. Її можна встановити за допомогою ключових 
+слів, наприклад, normal або bold. Для точнішого значення можна записати число від 100 до 900 з кроком 100, де 400 відповідає normal, а 700 — 
+bold.
+
+Властивість font-style дозволяє використати курсивну версію шрифту, якщо вона існує:
+
+font-weight: bold;
+font-style: italic;
+
+Зовнішні шрифти
+Якщо необхідно, то можна завантажити зовнішній шрифт за посиланням та додати його за допомогою директиви @font-face, де встановити назву 
+шрифту та шлях до нього:
+
+@font-face {
+  font-family: CustomFont;
+  src: url(fonts/custom_font.woff);
+}
+
+html {
+  font-family: CustomFont;
+}
+
+Сервіс Google Fonts пропонує багато безкоштовних шрифтів. Щоб підключити потрібний шрифт, зроби наступне:
+
+обери необхідні шрифт та нариси;
+скопіюй теги, що з'явилися праворуч, та встав їх до <head> твоєї сторінки:
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+
+Тепер цей шрифт доступний в CSS:
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+//////////                  Regular 4000                   /////////////
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+</style>
+
+font-family: 'Roboto', sans-serif;
+
+//////////////////////////////////////////////////////////////////////
+
+//////////                  Bold 7000                   /////////////
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+</style>
+
+font-family: 'Roboto', sans-serif;
+
+//////////////////////////////////////////////////////////////////////
+
+
+Відносні одиниці em та rem
+Значення 1em — це розмір шрифту батьківського елемента.
+
+.parent {
+  font-size: 16px;
+}
+
+.child {
+  padding: 0.75em; /* 12px = 0.75 * 16px */
+  font-size: 1.5em; /* 24px = 1.5 * 16px */
+}
+
+1rem — це розмір шрифту кореневого елемента (зазвичай це <html>):
+
+html {
+  font-size: 20px;
+}
+
+.parent {
+  font-size: 16px;
+}
+
+.child {
+  font-size: 1.5rem; /* 30px = 1.5 * 20px */
+}
